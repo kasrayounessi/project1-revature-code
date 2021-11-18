@@ -1,0 +1,56 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.revature.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <servlet-class>com.revature.EmployeeServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SubmitTicketServlet</servlet-name>
+        <servlet-class>com.revature.SubmitTicketServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>RegisterTicketServlet</servlet-name>
+        <servlet-class>com.revature.RegisterTicketServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ViewPendingTicketsServlet</servlet-name>
+        <servlet-class>com.revature.ViewPendingTicketsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <url-pattern>/EmployeeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SubmitTicketServlet</servlet-name>
+        <url-pattern>/SubmitTicketServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegisterTicketServlet</servlet-name>
+        <url-pattern>/RegisterTicketServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ViewPendingTicketsServlet</servlet-name>
+        <url-pattern>/ViewPendingTicketsServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
