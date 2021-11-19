@@ -14,5 +14,6 @@
         <property name="show_sql">true</property>
         <mapping class="com.revature.Employee" />
         <mapping class="com.revature.Ticket" />
+        <mapping class="com.revature.Manager" />
     </session-factory>
 </hibernate-configuration>

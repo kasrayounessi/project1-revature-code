@@ -16,10 +16,9 @@ import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
-public class ViewPendingTicketsServlet extends HttpServlet{
+public class ViewCheckedTicketsServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
         Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
         SessionFactory factory = cfg.buildSessionFactory();
@@ -32,7 +31,7 @@ public class ViewPendingTicketsServlet extends HttpServlet{
         HttpSession httpSession = request.getSession(false);
         String username = (String) httpSession.getAttribute("uname");
 
-        Query query = session.createQuery("from Ticket where username=:uname and status=:sts");
+        Query query = session.createQuery("from Ticket where username=:uname and status!=:sts");
         query.setParameter("uname", username);
         query.setParameter("sts", "pending");
         List results = query.list();
@@ -52,7 +51,7 @@ public class ViewPendingTicketsServlet extends HttpServlet{
         out.println("</head>");
         out.println("<body>");
         out.println("<div class='container'>");
-        out.println("<div class='text-primary' style='text-align:center;'><h1>Pending Tickets</h1></div>");
+        out.println("<div class='text-primary' style='text-align:center;'><h1>Past Tickets</h1></div>");
         out.println("<table class='table table-bordered bg-primary text-light'>");
         out.println("<thead>");
         out.println("<tr>");
@@ -60,6 +59,7 @@ public class ViewPendingTicketsServlet extends HttpServlet{
         out.println("<th>Amount</th>");
         out.println("<th>Reason</th>");
         out.println("<th>Additional Comments</th>");
+        out.println("<th>Status</th>");
         out.println("</tr>");
         out.println("</thead>");
         out.println("<tbody>");
@@ -70,6 +70,7 @@ public class ViewPendingTicketsServlet extends HttpServlet{
             out.println("<td>" + ticketRetrieved.getAmount() + "</td>");
             out.println("<td>" + ticketRetrieved.getReason() + "</td>");
             out.println("<td>" + ticketRetrieved.getComment() + "</td>");
+            out.println("<td>" + ticketRetrieved.getStatus() + "</td>");
             out.println("</tr>");
         }
         out.println("</tbody>");
@@ -77,9 +78,5 @@ public class ViewPendingTicketsServlet extends HttpServlet{
         out.println("</div>");
         out.println("</body>");
         out.println("</html>");
-
-
-
-
     }
 }

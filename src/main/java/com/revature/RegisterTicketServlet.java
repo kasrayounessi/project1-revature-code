@@ -8,6 +8,7 @@ import org.hibernate.cfg.Configuration;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class RegisterTicketServlet extends HttpServlet {
 
@@ -18,12 +19,13 @@ public class RegisterTicketServlet extends HttpServlet {
         Session session = factory.openSession();
         Transaction t = session.beginTransaction();
 
-        String amount = request.getParameter("ticket-amount-submitted");
-        String reason = request.getParameter("ticket-reason-submitted");
-        String comment = request.getParameter("ticket-comments-submitted");
+        HttpSession httpSession = request.getSession(false);
+
+        String username = (String) httpSession.getAttribute("uname");
 
         Ticket ticket = new Ticket();
 
+        ticket.setUsername(username);
         ticket.setAmount(request.getParameter("ticket-amount-submitted"));
         ticket.setReason(request.getParameter("ticket-reason-submitted"));
         ticket.setComment(request.getParameter("ticket-comments-submitted"));

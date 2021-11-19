@@ -10,16 +10,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
-public class ViewPendingTicketsServlet extends HttpServlet{
+public class DecideTicketServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
         Configuration cfg = new Configuration();
         cfg.configure("hibernate.cfg.xml");
         SessionFactory factory = cfg.buildSessionFactory();
@@ -29,16 +27,12 @@ public class ViewPendingTicketsServlet extends HttpServlet{
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        HttpSession httpSession = request.getSession(false);
-        String username = (String) httpSession.getAttribute("uname");
-
-        Query query = session.createQuery("from Ticket where username=:uname and status=:sts");
-        query.setParameter("uname", username);
+        Query query = session.createQuery("from Ticket where status=:sts");
         query.setParameter("sts", "pending");
         List results = query.list();
         Iterator it = results.iterator();
 
-        request.getRequestDispatcher("navbar.html").include(request, response);
+        request.getRequestDispatcher("manager-navbar.html").include(request, response);
         out.println("<br/>");
 
         out.println("<html>");
@@ -47,38 +41,30 @@ public class ViewPendingTicketsServlet extends HttpServlet{
         out.println("<style>");
         out.println("@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');\n");
         out.println("body{font-family: 'Oswald', sans-serif;}");
-        out.println("thead tr{color:black;}");
         out.println("</style>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<div class='container'>");
-        out.println("<div class='text-primary' style='text-align:center;'><h1>Pending Tickets</h1></div>");
-        out.println("<table class='table table-bordered bg-primary text-light'>");
-        out.println("<thead>");
-        out.println("<tr>");
-        out.println("<th>Ticket number</th>");
-        out.println("<th>Amount</th>");
-        out.println("<th>Reason</th>");
-        out.println("<th>Additional Comments</th>");
-        out.println("</tr>");
-        out.println("</thead>");
-        out.println("<tbody>");
+        out.println("<div class=\"container bg-primary\">");
+        out.println("<form action=\"AcceptTicketServlet\" method=\"get\">");
+        out.println("<div class=\"form-group\">");
+        out.println("<label for=\"pendingTicketsSelect\">Select Reason (50 characters)</label>");
+        out.println("<select class=\"form-control\" id=\"pendingTicketsSelect\" name=\"pending-ticket-chosen\">");
         while(it.hasNext()){
             Ticket ticketRetrieved = (Ticket) it.next();
-            out.println("<tr>");
-            out.println("<td>" + ticketRetrieved.getId() + "</td>");
-            out.println("<td>" + ticketRetrieved.getAmount() + "</td>");
-            out.println("<td>" + ticketRetrieved.getReason() + "</td>");
-            out.println("<td>" + ticketRetrieved.getComment() + "</td>");
-            out.println("</tr>");
+            out.println("<option>"+ ticketRetrieved.getId() +"</option>");
         }
-        out.println("</tbody>");
-        out.println("</table>");
+        out.println("</select>");
+        out.println("</div>");
+        out.println("<div>");
+        out.println("<input type='submit' value='Accept'");
+        out.println("</div>");
+        out.println("<div>");
+        out.println("<input type='submit' value='Reject' formaction='RejectTicketServlet'");
+        out.println("</div>");
+        out.println("</form>");
         out.println("</div>");
         out.println("</body>");
         out.println("</html>");
-
-
 
 
     }

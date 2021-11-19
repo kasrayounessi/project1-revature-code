@@ -8,16 +8,16 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class EmployeeServlet extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+
         HttpSession httpSession = request.getSession(false);
-        String username = (String) httpSession.getAttribute("uname");
+        httpSession.setAttribute("uname", "");
 
-        request.getRequestDispatcher("navbar.html").include(request, response);
-        out.println("<div class='container text-primary'><h4>Welcome "+username+"</h4></div>");
-
+        request.getRequestDispatcher("index.html").include(request, response);
     }
 }

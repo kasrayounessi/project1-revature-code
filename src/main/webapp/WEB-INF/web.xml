@@ -28,6 +28,41 @@
         <servlet-class>com.revature.ViewPendingTicketsServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ViewCheckedTicketsServlet</servlet-name>
+        <servlet-class>com.revature.ViewCheckedTicketsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.revature.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ManagerServlet</servlet-name>
+        <servlet-class>com.revature.ManagerServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ViewAllTicketsServlet</servlet-name>
+        <servlet-class>com.revature.ViewAllTicketsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DecideTicketServlet</servlet-name>
+        <servlet-class>com.revature.DecideTicketServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AcceptTicketServlet</servlet-name>
+        <servlet-class>com.revature.AcceptTicketServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>RejectTicketServlet</servlet-name>
+        <servlet-class>com.revature.RejectTicketServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -51,6 +86,41 @@
     <servlet-mapping>
         <servlet-name>ViewPendingTicketsServlet</servlet-name>
         <url-pattern>/ViewPendingTicketsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ViewCheckedTicketsServlet</servlet-name>
+        <url-pattern>/ViewCheckedTicketsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ManagerServlet</servlet-name>
+        <url-pattern>/ManagerServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ViewAllTicketsServlet</servlet-name>
+        <url-pattern>/ViewAllTicketsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DecideTicketServlet</servlet-name>
+        <url-pattern>/DecideTicketServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AcceptTicketServlet</servlet-name>
+        <url-pattern>/AcceptTicketServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RejectTicketServlet</servlet-name>
+        <url-pattern>/RejectTicketServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

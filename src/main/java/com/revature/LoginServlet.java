@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
@@ -29,19 +30,22 @@ public class LoginServlet extends HttpServlet {
         Transaction t = session.beginTransaction();
 
         if (user != null) {
+            String pwdRetrieved = "";
             if(user.equals("employee")){
-                //List result = session.createQuery("select from Employee where username:")
+
                 Query query = session.createQuery("from Employee where username=:uname ");
                 query.setParameter("uname",request.getParameter("username"));
                 List results = query.list();
                 Iterator it = results.iterator();
-                String pwdRetrieved = "";
+
                 while(it.hasNext()){
                     Employee empRetrieved = (Employee) it.next();
                     pwdRetrieved = empRetrieved.getPassword();
                     System.out.println(empRetrieved.getPassword());
                 }
                 if(request.getParameter("password").equals(pwdRetrieved)){
+                    HttpSession httpSession = request.getSession();
+                    httpSession.setAttribute("uname", request.getParameter("username"));
                     RequestDispatcher rd = request.getRequestDispatcher("EmployeeServlet");
                     rd.forward(request, response);
                 } else{
@@ -50,7 +54,26 @@ public class LoginServlet extends HttpServlet {
                 }
 
             } else if(user.equals("manager")){
-                System.out.println("ManagerServlet needs to be built");
+
+                Query query = session.createQuery("from Manager where username=:uname ");
+                query.setParameter("uname",request.getParameter("username"));
+                List results = query.list();
+                Iterator it = results.iterator();
+
+                while(it.hasNext()){
+                    Manager empRetrieved = (Manager) it.next();
+                    pwdRetrieved = empRetrieved.getPassword();
+                    System.out.println(empRetrieved.getPassword());
+                }
+                if(request.getParameter("password").equals(pwdRetrieved)){
+                    HttpSession httpSession = request.getSession();
+                    httpSession.setAttribute("uname", request.getParameter("username"));
+                    RequestDispatcher rd = request.getRequestDispatcher("ManagerServlet");
+                    rd.forward(request, response);
+                } else{
+                    out.println("No such account exits!");
+                    request.getRequestDispatcher("index.html").include(request, response);
+                }
             }
         } else {
             out.println("You must choose either employee or manager");
