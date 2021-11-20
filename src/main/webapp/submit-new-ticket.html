@@ -20,20 +20,17 @@
         }
 
     </style>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="title text-primary"><h1>Submit a new Ticket</h1></div>
 <div class="container bg-primary">
-    <form action="RegisterTicketServlet" method="post">
+    <form action="RegisterTicketServlet" method="get">
         <div class="form-group">
             <label for="exampleFormControlInput1">Enter amount:</label>
             <input type="text" name="ticket-amount-submitted" class="form-control" id="exampleFormControlInput1" placeholder="400.00">
         </div>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Select Reason (50 characters)</label>
+            <label for="exampleFormControlSelect1">Select Reason (250 characters)</label>
             <select class="form-control" id="exampleFormControlSelect1" name="ticket-reason-submitted">
                 <option>Transportation</option>
                 <option>Dining</option>

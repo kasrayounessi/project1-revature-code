@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
                 if(request.getParameter("password").equals(pwdRetrieved)){
                     HttpSession httpSession = request.getSession();
                     httpSession.setAttribute("uname", request.getParameter("username"));
+                    httpSession.setAttribute("pwd", request.getParameter("password"));
                     RequestDispatcher rd = request.getRequestDispatcher("EmployeeServlet");
                     rd.forward(request, response);
                 } else{
@@ -68,6 +69,7 @@ public class LoginServlet extends HttpServlet {
                 if(request.getParameter("password").equals(pwdRetrieved)){
                     HttpSession httpSession = request.getSession();
                     httpSession.setAttribute("uname", request.getParameter("username"));
+                    httpSession.setAttribute("pwd", request.getParameter("password"));
                     RequestDispatcher rd = request.getRequestDispatcher("ManagerServlet");
                     rd.forward(request, response);
                 } else{

@@ -17,6 +17,7 @@ public class LogoutServlet extends HttpServlet {
 
         HttpSession httpSession = request.getSession(false);
         httpSession.setAttribute("uname", "");
+        httpSession.setAttribute("pwd", "");
 
         request.getRequestDispatcher("index.html").include(request, response);
     }

@@ -63,6 +63,26 @@
         <servlet-class>com.revature.RejectTicketServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ChangeUsernameServlet</servlet-name>
+        <servlet-class>com.revature.ChangeUsernameServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UpdateUsernameServlet</servlet-name>
+        <servlet-class>com.revature.UpdateUsernameServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>com.revature.ChangePasswordServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UpdatePasswordServlet</servlet-name>
+        <servlet-class>com.revature.UpdatePasswordServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -121,6 +141,26 @@
     <servlet-mapping>
         <servlet-name>RejectTicketServlet</servlet-name>
         <url-pattern>/RejectTicketServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ChangeUsernameServlet</servlet-name>
+        <url-pattern>/ChangeUsernameServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UpdateUsernameServlet</servlet-name>
+        <url-pattern>/UpdateUsernameServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/ChangePasswordServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UpdatePasswordServlet</servlet-name>
+        <url-pattern>/UpdatePasswordServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

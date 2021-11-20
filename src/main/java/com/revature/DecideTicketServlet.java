@@ -41,13 +41,17 @@ public class DecideTicketServlet extends HttpServlet {
         out.println("<style>");
         out.println("@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');\n");
         out.println("body{font-family: 'Oswald', sans-serif;}");
+        out.println("form{padding:5px;}");
+        out.println("input[type='submit']{margin-bottom:3px;}");
+        out.println("form div{margin-left:5px;}");
         out.println("</style>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<div class=\"container bg-primary\">");
-        out.println("<form action=\"AcceptTicketServlet\" method=\"get\">");
+        out.println("<div class=\"container \">");
+        out.println("<div class='text-primary' style='text-align:center'><h1>Pending Tickets Form</h1></div>");
+        out.println("<form class='bg-primary' action=\"AcceptTicketServlet\" method=\"get\">");
         out.println("<div class=\"form-group\">");
-        out.println("<label for=\"pendingTicketsSelect\">Select Reason (50 characters)</label>");
+        out.println("<label for=\"pendingTicketsSelect\">Select a ticket number</label>");
         out.println("<select class=\"form-control\" id=\"pendingTicketsSelect\" name=\"pending-ticket-chosen\">");
         while(it.hasNext()){
             Ticket ticketRetrieved = (Ticket) it.next();
@@ -55,12 +59,15 @@ public class DecideTicketServlet extends HttpServlet {
         }
         out.println("</select>");
         out.println("</div>");
+        out.println("<br/>");
         out.println("<div>");
-        out.println("<input type='submit' value='Accept'");
+        out.println("<input type='submit' value='Accept' class=\"btn btn-outline-light btn-custom btn-lg btn-block\"");
         out.println("</div>");
+        out.println("<br/>");
         out.println("<div>");
-        out.println("<input type='submit' value='Reject' formaction='RejectTicketServlet'");
+        out.println("<input type='submit' value='Reject' formaction='RejectTicketServlet' class=\"btn btn-outline-light btn-custom btn-lg btn-block\"");
         out.println("</div>");
+        out.println("<br/>");
         out.println("</form>");
         out.println("</div>");
         out.println("</body>");
