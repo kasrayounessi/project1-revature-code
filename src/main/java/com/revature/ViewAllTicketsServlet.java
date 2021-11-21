@@ -56,6 +56,7 @@ public class ViewAllTicketsServlet extends HttpServlet {
             out.println("<tbody>");
             while(it.hasNext()){
                 Ticket ticketRetrieved = (Ticket) it.next();
+                System.out.println("ticket number: "+ticketRetrieved.getId()+", status = " + ticketRetrieved.getStatus());
                 out.println("<tr>");
                 out.println("<td>" + ticketRetrieved.getId() + "</td>");
                 out.println("<td>" + ticketRetrieved.getUsername() + "</td>");

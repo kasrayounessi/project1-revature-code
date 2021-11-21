@@ -51,10 +51,12 @@ public class ManagerDaoImpl implements ManagerDao{
 
         t.commit();
 
+
     }
 
     @Override
     public List viewPendingTickets() {
+        session.clear();
         Query query = session.createQuery("from Ticket where status=:sts");
         query.setParameter("sts", "pending");
         return query.list();
@@ -62,6 +64,7 @@ public class ManagerDaoImpl implements ManagerDao{
 
     @Override
     public List viewAllTickets() {
+        session.clear();
         Query query = session.createQuery("from Ticket");
         return query.list();
     }

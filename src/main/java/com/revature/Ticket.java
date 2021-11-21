@@ -3,11 +3,12 @@ package com.revature;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OrderColumn;
 
 @Entity
 public class Ticket {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue @OrderColumn
     private int id;
     private String username;
     private String amount;

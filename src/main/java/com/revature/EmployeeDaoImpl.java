@@ -27,7 +27,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
         query2.setParameter("newuname", newUsername);
         query2.setParameter("olduname", oldUsername);
         int result2 = query2.executeUpdate();
-        if((result1 != 0)&&(result2!=0)){
+        if((result1>0)&&(result2>0)){
             System.out.println("Employee username updated successfully");
         } else {
             System.out.println("Oops, something went wrong");
@@ -57,6 +57,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
     @Override
     public List viewPendingTickets(String username) {
 
+        session.clear();
         Query query = session.createQuery("from Ticket where username=:uname and status=:sts");
         query.setParameter("uname", username);
         query.setParameter("sts", "pending");
@@ -66,7 +67,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
     @Override
     public List viewCheckedTickets(String username) {
-
+        session.clear();
         Query query = session.createQuery("from Ticket where username=:uname and status!=:sts");
         query.setParameter("uname", username);
         query.setParameter("sts", "pending");

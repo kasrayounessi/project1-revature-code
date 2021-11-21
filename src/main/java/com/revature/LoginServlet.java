@@ -32,54 +32,62 @@ public class LoginServlet extends HttpServlet {
         if (user != null) {
             String pwdRetrieved = "";
             if(user.equals("employee")){
-
-                Query query = session.createQuery("from Employee where username=:uname ");
-                query.setParameter("uname",request.getParameter("username"));
-                List results = query.list();
-                Iterator it = results.iterator();
-
-                while(it.hasNext()){
-                    Employee empRetrieved = (Employee) it.next();
-                    pwdRetrieved = empRetrieved.getPassword();
-                    System.out.println(empRetrieved.getPassword());
-                }
-                if(request.getParameter("password").equals(pwdRetrieved)){
-                    HttpSession httpSession = request.getSession();
-                    httpSession.setAttribute("uname", request.getParameter("username"));
-                    httpSession.setAttribute("pwd", request.getParameter("password"));
-                    RequestDispatcher rd = request.getRequestDispatcher("EmployeeServlet");
-                    rd.forward(request, response);
-                } else{
-                    out.println("No such account exits!");
+                if(request.getParameter("password")==""){
                     request.getRequestDispatcher("index.html").include(request, response);
+                    out.println("<div class='container'><p>No such account exists!</p></div>");
+                } else{
+                    Query query = session.createQuery("from Employee where username=:uname ");
+                    query.setParameter("uname",request.getParameter("username"));
+                    List results = query.list();
+                    Iterator it = results.iterator();
+
+                    while(it.hasNext()){
+                        Employee empRetrieved = (Employee) it.next();
+                        pwdRetrieved = empRetrieved.getPassword();
+                    }
+                    if(request.getParameter("password").equals(pwdRetrieved)){
+                        HttpSession httpSession = request.getSession();
+                        httpSession.setAttribute("uname", request.getParameter("username"));
+                        httpSession.setAttribute("pwd", request.getParameter("password"));
+                        RequestDispatcher rd = request.getRequestDispatcher("EmployeeServlet");
+                        rd.forward(request, response);
+                    } else{
+                        request.getRequestDispatcher("index.html").include(request, response);
+                        out.println("<div class='container'><p>No such account exists!</p></div>");
+                    }
                 }
+
 
             } else if(user.equals("manager")){
-
-                Query query = session.createQuery("from Manager where username=:uname ");
-                query.setParameter("uname",request.getParameter("username"));
-                List results = query.list();
-                Iterator it = results.iterator();
-
-                while(it.hasNext()){
-                    Manager empRetrieved = (Manager) it.next();
-                    pwdRetrieved = empRetrieved.getPassword();
-                    System.out.println(empRetrieved.getPassword());
-                }
-                if(request.getParameter("password").equals(pwdRetrieved)){
-                    HttpSession httpSession = request.getSession();
-                    httpSession.setAttribute("uname", request.getParameter("username"));
-                    httpSession.setAttribute("pwd", request.getParameter("password"));
-                    RequestDispatcher rd = request.getRequestDispatcher("ManagerServlet");
-                    rd.forward(request, response);
-                } else{
-                    out.println("No such account exits!");
+                if(request.getParameter("password")==""){
                     request.getRequestDispatcher("index.html").include(request, response);
+                    out.println("<div class='container'><p>No such account exists!</p></div>");
+                } else{
+                    Query query = session.createQuery("from Manager where username=:uname ");
+                    query.setParameter("uname",request.getParameter("username"));
+                    List results = query.list();
+                    Iterator it = results.iterator();
+
+                    while(it.hasNext()){
+                        Manager empRetrieved = (Manager) it.next();
+                        pwdRetrieved = empRetrieved.getPassword();
+                    }
+                    if(request.getParameter("password").equals(pwdRetrieved)){
+                        HttpSession httpSession = request.getSession();
+                        httpSession.setAttribute("uname", request.getParameter("username"));
+                        httpSession.setAttribute("pwd", request.getParameter("password"));
+                        RequestDispatcher rd = request.getRequestDispatcher("ManagerServlet");
+                        rd.forward(request, response);
+                    } else{
+                        request.getRequestDispatcher("index.html").include(request, response);
+                        out.println("<div class='container'><p>No such account exists!</p></div>");
+                    }
                 }
+
             }
         } else {
-            out.println("You must choose either employee or manager");
             request.getRequestDispatcher("index.html").include(request, response);
+            out.println("<div class='container'><p>You must choose either employee or manager</p></div>");
         }
 
     }
