@@ -1,10 +1,5 @@
 package com.revature;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +12,19 @@ public class ChangeUsernameServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+        HttpSession httpSession = request.getSession(false);
+        String username = (String) httpSession.getAttribute("uname");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        request.getRequestDispatcher("navbar.html").include(request, response);
-        out.println("<br/>");
-        request.getRequestDispatcher("change-username.html").include(request, response);
-
+        if(username.equals("")){
+            request.getRequestDispatcher("index.html").include(request, response);
+            out.println("<div class='container'><p>You have to login first!</p></div>");
+        } else {
+            request.getRequestDispatcher("navbar.html").include(request, response);
+            out.println("<br/>");
+            request.getRequestDispatcher("change-username.html").include(request, response);
+        }
 
     }
 }

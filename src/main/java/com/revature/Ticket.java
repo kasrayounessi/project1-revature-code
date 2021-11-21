@@ -13,16 +13,17 @@ public class Ticket {
     private String amount;
     private String reason;
     private String comment;
-    private String status = "pending";
+    private String status;
 
     public Ticket(){}
 
-    public Ticket(int id, String username, String amount, String reason, String comment) {
+    public Ticket(int id, String username, String amount, String reason, String comment, String status) {
         this.id = id;
         this.username = username;
         this.amount = amount;
         this.reason = reason;
         this.comment = comment;
+        this.status = status;
     }
 
     public int getId() {
@@ -65,12 +66,5 @@ public class Ticket {
         return status;
     }
 
-
-    public void verifyTicket(){
-        this.status = "verified";
-    }
-
-    public void rejectTicket(){
-        this.status = "rejected";
-    }
+    public void setStatus(String status) {this.status = status;}
 }

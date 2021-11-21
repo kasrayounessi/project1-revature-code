@@ -11,13 +11,19 @@ import java.io.PrintWriter;
 public class ManagerServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         HttpSession httpSession = request.getSession(false);
         String username = (String) httpSession.getAttribute("uname");
 
-        request.getRequestDispatcher("manager-navbar.html").include(request, response);
-        out.println("<div class='container text-primary'><h4>Welcome "+username+"</h4></div>");
+        if(username.equals("")){
+            request.getRequestDispatcher("index.html").include(request, response);
+            out.println("<div class='container'><p>You have to login first!</p></div>");
+        } else {
+            request.getRequestDispatcher("manager-navbar.html").include(request, response);
+            out.println("<div class='container text-primary'><h4>Welcome " + username + "</h4></div>");
+        }
 
     }
 }

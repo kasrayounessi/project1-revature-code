@@ -20,35 +20,23 @@ public class UpdatePasswordServlet extends HttpServlet {
         HttpSession httpSession = request.getSession(false);
         String password = (String) httpSession.getAttribute("pwd");
         String username = (String) httpSession.getAttribute("uname");
-
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        System.out.println("Old password: "+request.getParameter("old-password-inputted"));
-        System.out.println("saved password: "+ password);
-
-        if(request.getParameter("old-password-inputted").equals(password)){
-            Configuration cfg = new Configuration();
-            cfg.configure("hibernate.cfg.xml");
-            SessionFactory factory = cfg.buildSessionFactory();
-            Session session = factory.openSession();
-            Transaction t = session.beginTransaction();
-
-
-            Query query1 = session.createQuery("update Employee set password=:pwd where username=:uname");
-            query1.setParameter("pwd", request.getParameter("new-password-inputted"));
-            query1.setParameter("uname", username);
-            int result1 = query1.executeUpdate();
-            t.commit();
-            session.close();
-
-            httpSession.setAttribute("pwd", request.getParameter("new-password-inputted"));
-
-            request.getRequestDispatcher("EmployeeServlet").include(request, response);
-            out.println("<div class='container'><p>Your password was changed successfully</p></div>");
-        } else{
-            request.getRequestDispatcher("ChangePasswordServlet").include(request, response);
-            out.println("<div class='container'><p>You have entered the wrong password!</p></div>");
+        if(username.equals("")) {
+            request.getRequestDispatcher("index.html").include(request, response);
+            out.println("<div class='container'><p>You have to login first!</p></div>");
+        } else {
+            if (request.getParameter("old-password-inputted").equals(password)) {
+                EmployeeDao employeeDao = EmployeeDaoFactory.getEmployeeDao();
+                employeeDao.uploadEmployeePassword(username, request.getParameter("new-password-inputted"));
+                httpSession.setAttribute("pwd", request.getParameter("new-password-inputted"));
+                request.getRequestDispatcher("EmployeeServlet").include(request, response);
+                out.println("<div class='container'><p>Your password was changed successfully</p></div>");
+            } else {
+                request.getRequestDispatcher("ChangePasswordServlet").include(request, response);
+                out.println("<div class='container'><p>You have entered the wrong password!</p></div>");
+            }
         }
     }
 }

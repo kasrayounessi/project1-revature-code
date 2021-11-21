@@ -28,6 +28,7 @@
         <servlet-class>com.revature.ViewPendingTicketsServlet</servlet-class>
     </servlet>
 
+
     <servlet>
         <servlet-name>ViewCheckedTicketsServlet</servlet-name>
         <servlet-class>com.revature.ViewCheckedTicketsServlet</servlet-class>
@@ -73,6 +74,7 @@
         <servlet-class>com.revature.UpdateUsernameServlet</servlet-class>
     </servlet>
 
+
     <servlet>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>com.revature.ChangePasswordServlet</servlet-class>
@@ -107,6 +109,7 @@
         <servlet-name>ViewPendingTicketsServlet</servlet-name>
         <url-pattern>/ViewPendingTicketsServlet</url-pattern>
     </servlet-mapping>
+
 
     <servlet-mapping>
         <servlet-name>ViewCheckedTicketsServlet</servlet-name>
@@ -152,6 +155,7 @@
         <servlet-name>UpdateUsernameServlet</servlet-name>
         <url-pattern>/UpdateUsernameServlet</url-pattern>
     </servlet-mapping>
+
 
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
