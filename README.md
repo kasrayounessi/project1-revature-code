@@ -7,7 +7,7 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 ## Technologies Used
 
 * Java - version 17
-* Maven - version 1.7
+* Maven - version 3.5.3
 * Hibernate - version 5.6.1
 * MySQL - version 8.0.27
 * Bootstrap - version 4.6
