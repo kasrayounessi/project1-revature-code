@@ -36,8 +36,8 @@ In order to login, you must create two MySQL tables, employee and manager. The f
 * CREATE TABLE employee (emp_id INTEGER PRIMARY KEY AUTO_INCREMENT, emp_username VARCHAR(40) UNIQUE NOT NULL, emp_password VARCHAR(40) NOT NULL);
 * CREATE TABLE manager (man_id INTEGER PRIMARY KEY AUTO_INCREMENT, man_username VARCHAR(40) UNIQUE NOT NULL, man_password VARCHAR(40) NOT NULL);
 
-* INSERT INTO Employee(emp_username, emp_password) VALUES ('kasra', '123');
-* INSERT INTO Manager(man_username, man_password) VALUES ('admin', '123');
+* INSERT INTO employee(emp_username, emp_password) VALUES ('kasra', '123');
+* INSERT INTO manager(man_username, man_password) VALUES ('admin', '123');
 
 These commands register 'kasra' as an employee and 'admin' as an employer/manager. (Both cases, password is '123')
 
