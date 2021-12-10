@@ -31,10 +31,10 @@ To-do list:
 * Click on 'Edit Configuration' and add "Smart Tomcat" as a configuration.
 * Add javax.servlet.api as a dependency
 
-In order to login, you must create two MySQL tables, Employee and Employer. The feature of adding users has not been added to this project. Here are sample commands to create tables and register users:
+In order to login, you must create two MySQL tables, employee and manager. The feature of adding users has not been added to this project. Here are sample commands to create tables and register users:
 
-* CREATE TABLE Employee (emp_id INTEGER PRIMARY KEY AUTO_INCREMENT, emp_username VARCHAR(40) UNIQUE NOT NULL, emp_password VARCHAR(40) NOT NULL);
-* CREATE TABLE Manager (man_id INTEGER PRIMARY KEY AUTO_INCREMENT, man_username VARCHAR(40) UNIQUE NOT NULL, man_password VARCHAR(40) NOT NULL);
+* CREATE TABLE employee (emp_id INTEGER PRIMARY KEY AUTO_INCREMENT, emp_username VARCHAR(40) UNIQUE NOT NULL, emp_password VARCHAR(40) NOT NULL);
+* CREATE TABLE manager (man_id INTEGER PRIMARY KEY AUTO_INCREMENT, man_username VARCHAR(40) UNIQUE NOT NULL, man_password VARCHAR(40) NOT NULL);
 
 * INSERT INTO Employee(emp_username, emp_password) VALUES ('kasra', '123');
 * INSERT INTO Manager(man_username, man_password) VALUES ('admin', '123');
