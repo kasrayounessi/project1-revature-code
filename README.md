@@ -26,7 +26,7 @@ To-do list:
 
 ## Getting Started
    
-(Using your desired IDE)
+> (Using your desired IDE)
 
 * Click on 'Edit Configuration' and add "Smart Tomcat" as a configuration.
 * Add javax.servlet.api as a dependency
@@ -43,7 +43,7 @@ These commands register 'kasra' as an employee and 'admin' as an employer/manage
 
 ## Usage
 
-> There are images of the login, employee, and employer menus in the same repository as this file. 
+There are images of the login, employee, and employer menus in the same repository as this file. 
 
 
 ## License
